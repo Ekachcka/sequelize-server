@@ -3,6 +3,8 @@ const router = express.Router();
 
 const UserController = require('../controllers/user.controller');
 const OrderController = require('../controllers/order.controller');
+const TasksController = require('../controllers/tasks.controller');
+
 const { findUser } = require('../middlewares/userMW');
 
 /* localhost:5000/api/users */
@@ -24,5 +26,7 @@ router.delete('/users/v2/:userId', findUser, UserController.deleteUserv2);
 router.post('/users/:userId/orders', OrderController.createOrder);
 
 router.post('/users/:userId/orders/v2', findUser, OrderController.createMagicOrder);
+
+router.post('/task',  TasksController.createTask);
 
 module.exports = router;
